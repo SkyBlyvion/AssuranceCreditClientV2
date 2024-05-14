@@ -5,7 +5,12 @@ permissionset 50100 "Customer Credit Perm"
 
     Permissions =
         tabledata "Assurance Credit Client" = RMID, // Correct permissions for table
-        tabledata "Decision Org Assurance Client" = RIMD; // Correct permissions for table
+        tabledata "Decision Org Assurance Client" = RIMD, // Correct permissions for table
+        page "Assurance Credit Client List" = X, // Correct permissions for page
+        page "Decision Org Ass Client List" = X, // Correct permissions for page
+        page "Assurance Credit Client Card" = X; // Correct permissions for page
+
+
 
 
 

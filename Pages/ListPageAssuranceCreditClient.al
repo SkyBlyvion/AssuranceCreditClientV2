@@ -29,6 +29,8 @@ page 50016 "Assurance Credit Client List"
                 field("Decision Assurance"; Rec."Decision Assurance")
                 {
                     ApplicationArea = All;
+                    TableRelation = "Decision Org Assurance Client".Code; // Create Drop-Down
+
                 }
                 // Display the "Valeur" field from the source table
                 field("Valeur"; Rec."Valeur")

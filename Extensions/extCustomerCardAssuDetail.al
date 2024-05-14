@@ -37,16 +37,6 @@ pageextension 50101 extCustomerCardAssuDetails extends "Customer Card"
                 end;
             }
 
-            action("Decision Org Assurance Client Card")
-            {
-                ApplicationArea = All;
-                Caption = 'Decision Org Assurance Client Card';
-                ToolTip = 'Open the Decision Org Assurance Client card';
-                trigger OnAction()
-                begin
-                    PAGE.Run(PAGE::"Decision Org Ass Client Card");
-                end;
-            }
         }
     }
 }

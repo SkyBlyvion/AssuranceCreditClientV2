@@ -1,0 +1,151 @@
+
+Pour afficher la Designation au lieu du Code dans le dropdown de Decision Assurance, vous pouvez utiliser un champ de recherche qui combine les deux champs. En Business Central, cela se fait en définissant une page lookup spécifique pour ce champ ou en utilisant des captions pour afficher la valeur désirée.
+
+Étape 1 : Créer une Page Lookup pour la Table Decision Org Assurance Client
+Créez une page lookup qui affiche le Code et la Designation.
+
+Page Lookup pour Decision Org Assurance Client
+al
+Copier le code
+page 50102 "Decision Org Assurance Client Lookup"
+{
+    PageType = List;
+    SourceTable = "Decision Org Assurance Client";
+    ApplicationArea = All;
+    Editable = false; // La page de recherche n'est pas éditable
+
+    layout
+    {
+        area(content)
+        {
+            repeater(Group)
+            {
+                field("Code"; Rec."Code")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Code';
+                }
+                field("Designation FR"; Rec."Designation FR")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Designation FR';
+                }
+                field("Designation ES"; Rec."Designation ES")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Designation ES';
+                }
+            }
+        }
+    }
+}
+Étape 2 : Modifier les Pages pour Utiliser la Page Lookup
+Mettez à jour les pages Assurance Credit Client Card et Assurance Credit Client List pour utiliser cette page lookup pour le champ Decision Assurance.
+
+Assurance Credit Client Card
+al
+Copier le code
+page 50015 "Assurance Credit Client Card"
+{
+    PageType = Card;
+    SourceTable = "Assurance Credit Client";
+    ApplicationArea = All;
+    Editable = true;
+
+    layout
+    {
+        area(content)
+        {
+            group(Group)
+            {
+                field("Code Client"; Rec."Code Client")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+                field("Date"; Rec."Date")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+                field("Decision Assurance"; Rec."Decision Assurance")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    TableRelation = "Decision Org Assurance Client".Code WHERE (Code=FILTER(<value>));
+                    LookupPageID = "Decision Org Assurance Client Lookup";
+                }
+                field("Valeur"; Rec."Valeur")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+                field("Raison"; Rec."Raison")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+                field("Case Number"; Rec."Case Number")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+            }
+        }
+    }
+}
+Assurance Credit Client List
+al
+Copier le code
+page 50016 "Assurance Credit Client List"
+{
+    PageType = List;
+    SourceTable = "Assurance Credit Client";
+    ApplicationArea = All;
+    Editable = true;
+
+    layout
+    {
+        area(content)
+        {
+            repeater(Group)
+            {
+                field("Code Client"; Rec."Code Client")
+                {
+                    ApplicationArea = All;
+                }
+                field("Date"; Rec."Date")
+                {
+                    ApplicationArea = All;
+                }
+                field("Decision Assurance"; Rec."Decision Assurance")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    TableRelation = "Decision Org Assurance Client".Code;
+                    LookupPageID = "Decision Org Assurance Client Lookup";
+                }
+                field("Valeur"; Rec."Valeur")
+                {
+                    ApplicationArea = All;
+                }
+                field("Raison"; Rec."Raison")
+                {
+                    ApplicationArea = All;
+                }
+                field("Case Number"; Rec."Case Number")
+                {
+                    ApplicationArea = All;
+                }
+            }
+        }
+    }
+}
+Résumé des Modifications
+Création d'une Page Lookup :
+
+La page Decision Org Assurance Client Lookup affiche le Code et les Designations.
+Mise à Jour des Pages Assurance Credit Client Card et Assurance Credit Client List :
+
+Utilisez TableRelation et LookupPageID pour lier le champ Decision Assurance à la page lookup créée.
+Avec ces modifications, le champ Decision Assurance affichera un dropdown list avec les Codes et les Designations. Lorsqu'un utilisateur sélectionne une valeur dans le dropdown, il verra à la fois le Code et la Designation, facilitant ainsi la sélection de la valeur correcte.
