@@ -33,7 +33,7 @@ pageextension 50101 extCustomerCardAssuDetails extends "Customer Card"
                 ToolTip = 'Open the Decision Org Assurance Client list';
                 trigger OnAction()
                 begin
-                    PAGE.Run(PAGE::"Decision Org Assurance Client List");
+                    PAGE.Run(PAGE::"Decision Org Ass Client List");
                 end;
             }
 
@@ -44,7 +44,7 @@ pageextension 50101 extCustomerCardAssuDetails extends "Customer Card"
                 ToolTip = 'Open the Decision Org Assurance Client card';
                 trigger OnAction()
                 begin
-                    PAGE.Run(PAGE::"Decision Org Assurance Client Card");
+                    PAGE.Run(PAGE::"Decision Org Ass Client Card");
                 end;
             }
         }

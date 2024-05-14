@@ -1,4 +1,4 @@
-page 50101 "Decision Org Assurance Client List"
+page 50101 "Decision Org Ass Client List"
 {
     PageType = List;
     SourceTable = "Decision Org Assurance Client";
@@ -39,8 +39,7 @@ page 50101 "Decision Org Assurance Client List"
                 PromotedCategory = Process;
                 trigger OnAction()
                 begin
-                    CurrPage.Edit(true);
-                    CurrPage.Insert(true);
+                    PAGE.Run(PAGE::"Decision Org Ass Client Card");
                 end;
             }
 
@@ -53,7 +52,7 @@ page 50101 "Decision Org Assurance Client List"
                 PromotedCategory = Process;
                 trigger OnAction()
                 begin
-                    CurrPage.Edit(true);
+                    PAGE.Run(PAGE::"Decision Org Ass Client Card", Rec);
                 end;
             }
         }

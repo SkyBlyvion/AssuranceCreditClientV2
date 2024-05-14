@@ -39,22 +39,5 @@ page 50015 "Assurance Credit Client Card"
         }
     }
 
-    actions
-    {
-        area(processing)
-        {
-            action(Edit)
-            {
-                ApplicationArea = All;
-                Caption = 'Edit';
-                ToolTip = 'Edit this record';
-                Promoted = true;
-                PromotedCategory = Process;
-                trigger OnAction()
-                begin
-                    CurrPage.Edit(true);
-                end;
-            }
-        }
-    }
+
 }

@@ -1,4 +1,4 @@
-page 50100 "Decision Org Assurance Client Card"
+page 50100 "Decision Org Ass Client Card"
 {
     PageType = Card;
     SourceTable = "Decision Org Assurance Client";
@@ -26,22 +26,5 @@ page 50100 "Decision Org Assurance Client Card"
         }
     }
 
-    actions
-    {
-        area(processing)
-        {
-            action(Edit)
-            {
-                ApplicationArea = All;
-                Caption = 'Edit';
-                ToolTip = 'Edit this record';
-                Promoted = true;
-                PromotedCategory = Process;
-                trigger OnAction()
-                begin
-                    CurrPage.Edit(true);
-                end;
-            }
-        }
-    }
+
 }
