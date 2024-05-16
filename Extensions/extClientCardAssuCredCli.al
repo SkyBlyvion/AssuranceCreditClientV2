@@ -2,7 +2,9 @@ pageextension 50100 extClientCardAssuCredCli extends "Customer Card"
 {
     layout
     {
-        addafter("General") // Add the "Assurance Details" group after the "General" group
+        addafter("General")
+        // Add the "Assurance Details" group after the "General" group
+        // Ajoute un champ DecisionAssuranceDisplay pour afficher la désignation de la décision d'assurance sur la Customer Card.
         {
             group("Assurance Details")
             {

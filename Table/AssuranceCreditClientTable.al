@@ -7,6 +7,7 @@ table 50015 "Assurance Credit Client"
         field(1; "Code Client"; Code[20])
         {
             DataClassification = CustomerContent;
+            // Relation avec la table Customer, champ "No."
             TableRelation = Customer."No.";
         }
         field(2; "Date"; Date)
@@ -16,6 +17,7 @@ table 50015 "Assurance Credit Client"
         field(3; "Decision Assurance"; Code[10])
         {
             DataClassification = CustomerContent;
+            // Relation avec la table "Decision Org Assurance Client", champ "Code"
             TableRelation = "Decision Org Assurance Client"."Code";
         }
         field(4; "Valeur"; Decimal)
@@ -32,13 +34,17 @@ table 50015 "Assurance Credit Client"
         }
         field(7; "Designation FR"; Text[50])
         {
+            // Défini comme un champ de type FlowField
             FieldClass = FlowField;
+            // Calcule la valeur en faisant une recherche dans la table "Decision Org Assurance Client"
             CalcFormula = Lookup("Decision Org Assurance Client"."Designation FR" WHERE("Code" = FIELD("Decision Assurance")));
             Editable = false;
         }
         field(8; "Designation ES"; Text[50])
         {
+            // Défini comme un champ de type FlowField
             FieldClass = FlowField;
+            // Calcule la valeur en faisant une recherche dans la table "Decision Org Assurance Client"
             CalcFormula = Lookup("Decision Org Assurance Client"."Designation ES" WHERE("Code" = FIELD("Decision Assurance")));
             Editable = false;
         }
@@ -46,6 +52,7 @@ table 50015 "Assurance Credit Client"
 
     keys
     {
+        // Clé primaire pour la table, basée sur le champ "Code Client"
         key(PK; "Code Client")
         {
             Clustered = true;

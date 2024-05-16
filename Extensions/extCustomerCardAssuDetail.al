@@ -2,7 +2,9 @@ pageextension 50101 extCustomerCardAssuDetails extends "Customer Card"
 {
     actions
     {
-        addlast(Processing) // Run pages after processing, in the actionbar area
+        addlast(Processing)
+        // Run pages after processing, in the actionbar area
+        // Ajoute des actions pour ouvrir les listes et les cartes liées aux clients d'assurance crédit et aux décisions d'assurance.
         {
             action("Assurance Credit Client List")
             {

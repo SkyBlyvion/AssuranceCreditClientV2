@@ -1,9 +1,9 @@
 page 50015 "Assurance Credit Client Card"
 {
-    PageType = Card;
-    SourceTable = "Assurance Credit Client";
-    ApplicationArea = All;
-    Editable = true;
+    PageType = Card; // Type de page
+    SourceTable = "Assurance Credit Client"; // Table source
+    ApplicationArea = All; // Zone d'application
+    Editable = true; // Page editable
 
     layout
     {
@@ -11,7 +11,7 @@ page 50015 "Assurance Credit Client Card"
         {
             group(Group)
             {
-                field("Code Client"; Rec."Code Client")
+                field("Code Client"; Rec."Code Client") // Champ pour afficher le code du client
                 {
                     ApplicationArea = All;
                     Editable = true;
@@ -25,7 +25,8 @@ page 50015 "Assurance Credit Client Card"
                 {
                     ApplicationArea = All;
                     Editable = true;
-                    TableRelation = "Decision Org Assurance Client".Code; // Create Drop-Down
+                    // Création d'un menu déroulant basé sur la table "Decision Org Assurance Client"
+                    TableRelation = "Decision Org Assurance Client".Code;
                 }
                 field("Designation FR"; Rec."Designation FR")
                 {

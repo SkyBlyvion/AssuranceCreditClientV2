@@ -2,7 +2,8 @@ tableextension 50102 CustomerExtension extends Customer
 {
     fields
     {
-        // Ajouter un champ pour stocker la décision de l'assurance crédit
+        // Ajoute un champ Decision Assurance à la table Customer.
+        //Permet d'afficher directement cette information sur la Customer Card.
         field(50100; "Decision Assurance"; Code[10])
         {
             DataClassification = CustomerContent;
