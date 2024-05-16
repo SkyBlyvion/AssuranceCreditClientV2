@@ -2,7 +2,7 @@ pageextension 50100 extClientCardAssuCredCli extends "Customer Card"
 {
     layout
     {
-        addafter("General")
+        addafter("General")// pageextension customer card field Assurance Details
         {
             group("Assurance Details")
             {

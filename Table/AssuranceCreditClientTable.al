@@ -16,6 +16,7 @@ table 50015 "Assurance Credit Client"
         field(3; "Decision Assurance"; Code[10])
         {
             DataClassification = CustomerContent;
+            TableRelation = "Decision Org Assurance Client"."Code";
         }
         field(4; "Valeur"; Decimal)
         {
@@ -28,6 +29,18 @@ table 50015 "Assurance Credit Client"
         field(6; "Case Number"; Text[12])
         {
             DataClassification = CustomerContent; // Assuming this is a reference number relevant to the customer
+        }
+        field(7; "Designation FR"; Text[50])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Decision Org Assurance Client"."Designation FR" WHERE("Code" = FIELD("Decision Assurance")));
+            Editable = false;
+        }
+        field(8; "Designation ES"; Text[50])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Decision Org Assurance Client"."Designation ES" WHERE("Code" = FIELD("Decision Assurance")));
+            Editable = false;
         }
     }
 

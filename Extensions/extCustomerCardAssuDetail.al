@@ -2,7 +2,7 @@ pageextension 50101 extCustomerCardAssuDetails extends "Customer Card"
 {
     actions
     {
-        addlast(Processing)
+        addlast(Processing) // Run pages after processing, in the actionbar area
         {
             action("Assurance Credit Client List")
             {
@@ -21,8 +21,15 @@ pageextension 50101 extCustomerCardAssuDetails extends "Customer Card"
                 Caption = 'Assurance Credit Client Card';
                 ToolTip = 'Open the Assurance Credit Client card';
                 trigger OnAction()
+                var
+                    AssuranceCreditClientRec: Record "Assurance Credit Client";
                 begin
-                    PAGE.Run(PAGE::"Assurance Credit Client Card");
+                    if not AssuranceCreditClientRec.Get(Rec."No.") then begin
+                        AssuranceCreditClientRec.Init();
+                        AssuranceCreditClientRec."Code Client" := Rec."No.";
+                        AssuranceCreditClientRec.Insert(true); // True for AutoIncrement
+                    end;
+                    PAGE.Run(PAGE::"Assurance Credit Client Card", AssuranceCreditClientRec);
                 end;
             }
 
@@ -36,7 +43,6 @@ pageextension 50101 extCustomerCardAssuDetails extends "Customer Card"
                     PAGE.Run(PAGE::"Decision Org Ass Client List");
                 end;
             }
-
         }
     }
 }

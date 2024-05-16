@@ -27,6 +27,16 @@ page 50015 "Assurance Credit Client Card"
                     Editable = true;
                     TableRelation = "Decision Org Assurance Client".Code; // Create Drop-Down
                 }
+                field("Designation FR"; Rec."Designation FR")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field("Designation ES"; Rec."Designation ES")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
                 field("Valeur"; Rec."Valeur")
                 {
                     ApplicationArea = All;

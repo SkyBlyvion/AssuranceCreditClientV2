@@ -27,4 +27,12 @@ table 50100 "Decision Org Assurance Client"
             Clustered = true;
         }
     }
+
+    fieldgroups // include a FieldGroup for the dropdown display
+    {
+        fieldgroup(DropDown; "Code", "Designation FR", "Designation ES")
+        {
+
+        }
+    }
 }
