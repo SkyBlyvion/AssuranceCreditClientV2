@@ -2,7 +2,7 @@ pageextension 50100 extClientCardAssuCredCli extends "Customer Card"
 {
     layout
     {
-        addafter("General")// pageextension customer card field Assurance Details
+        addafter("General") // Add the "Assurance Details" group after the "General" group
         {
             group("Assurance Details")
             {
@@ -16,29 +16,24 @@ pageextension 50100 extClientCardAssuCredCli extends "Customer Card"
         }
     }
 
-    // Variable pour stocker temporairement les données
+    // Variable to temporarily store the data
     var
-        DecisionAssuranceDisplay: Code[10];
+        DecisionAssuranceDisplay: Text[50]; // Update to Text[50] to match Designation FR length
 
     trigger OnAfterGetRecord()
     var
         AssuranceCreditClient: Record "Assurance Credit Client";
+        DecisionOrgAssuranceClient: Record "Decision Org Assurance Client";
     begin
-        //Message('Client No: %1', Rec."No.");
+        // Initialize display value
+        DecisionAssuranceDisplay := 'Not Found';
 
-        // Utilisez le numéro de client pour récupérer l'enregistrement correspondant
+        // Use the customer number to retrieve the corresponding record from "Assurance Credit Client"
         if AssuranceCreditClient.Get(Rec."No.") then begin
-            DecisionAssuranceDisplay := AssuranceCreditClient."Decision Assurance";
-            //Message('Decision Assurance Found: %1', DecisionAssuranceDisplay);
-        end else begin
-            // Gestion des enregistrements non trouvés
-            //Message('Aucun enregistrement trouvé pour le client No: %1', Rec."No.");
-            DecisionAssuranceDisplay := ''; // Assurez-vous que le champ est affiché même s'il est vide
-        end;
-
-        // Gestion des tables vides (le message sera affiché si aucun enregistrement n'est trouvé)
-        if not AssuranceCreditClient.FindFirst() then begin
-            //Message('La table "Assurance Credit Client" est actuellement vide.');
+            // Use the "Decision Assurance" code to retrieve the designation from "Decision Org Assurance Client"
+            if DecisionOrgAssuranceClient.Get(AssuranceCreditClient."Decision Assurance") then begin
+                DecisionAssuranceDisplay := DecisionOrgAssuranceClient."Designation FR";
+            end;
         end;
     end;
 }
