@@ -1,4 +1,4 @@
-table 50100 "Decision Org Assurance Client"
+table 50009 "Decision Org Assurance Client"
 {
     DataClassification = ToBeClassified;
 

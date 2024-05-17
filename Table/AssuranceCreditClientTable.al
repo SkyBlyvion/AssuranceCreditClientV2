@@ -1,4 +1,4 @@
-table 50015 "Assurance Credit Client"
+table 50008 "Assurance Credit Client"
 {
     DataClassification = CustomerContent; // General classification for the table
 
@@ -37,6 +37,7 @@ table 50015 "Assurance Credit Client"
             // Défini comme un champ de type FlowField
             FieldClass = FlowField;
             // Calcule la valeur en faisant une recherche dans la table "Decision Org Assurance Client"
+            // Since "Code", "Designation FR" and "Designation ES" are all in the same table ans same row, it can calculate 
             CalcFormula = Lookup("Decision Org Assurance Client"."Designation FR" WHERE("Code" = FIELD("Decision Assurance")));
             Editable = false;
         }

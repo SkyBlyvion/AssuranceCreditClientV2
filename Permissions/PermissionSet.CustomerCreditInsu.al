@@ -1,4 +1,4 @@
-permissionset 50100 "Customer Credit Perm"
+permissionset 50007 "Customer Credit Perm"
 {
     Assignable = true;
     Caption = 'Client Assurance Credit Permissions'; // Correctly terminated with a semicolon

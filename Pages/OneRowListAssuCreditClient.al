@@ -1,4 +1,4 @@
-page 50015 "Assurance Credit Client Card"
+page 50006 "Assurance Credit Client Card"
 {
     PageType = Card; // Type de page
     SourceTable = "Assurance Credit Client"; // Table source

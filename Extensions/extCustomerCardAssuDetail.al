@@ -1,4 +1,4 @@
-pageextension 50101 extCustomerCardAssuDetails extends "Customer Card"
+pageextension 50003 extCustomerCardAssuDetails extends "Customer Card"
 {
     actions
     {

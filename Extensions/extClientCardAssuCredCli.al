@@ -1,4 +1,4 @@
-pageextension 50100 extClientCardAssuCredCli extends "Customer Card"
+pageextension 50002 extClientCardAssuCredCli extends "Customer Card"
 {
     layout
     {

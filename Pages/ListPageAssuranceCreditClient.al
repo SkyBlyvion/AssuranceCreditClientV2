@@ -1,4 +1,4 @@
-page 50016 "Assurance Credit Client List"
+page 50004 "Assurance Credit Client List"
 {
     // Define the page as a List page
     PageType = List;
