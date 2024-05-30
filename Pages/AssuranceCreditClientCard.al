@@ -1,6 +1,6 @@
-page 50004 "Assurance Credit Client List"
+page 50006 "Assurance Credit Client Card"
 {
-    PageType = List;
+    PageType = Card;
     SourceTable = "Assurance Credit Client";
     ApplicationArea = All;
     Editable = true;
@@ -9,11 +9,12 @@ page 50004 "Assurance Credit Client List"
     {
         area(content)
         {
-            repeater(Group)
+            group(Group)
             {
                 field("Code Client"; Rec."Code Client")
                 {
                     ApplicationArea = All;
+                    Editable = false; // Ne permet pas de modifier le Code Client
                     TableRelation = Customer."No.";
                 }
                 field("Date"; Rec."Date")
@@ -40,10 +41,4 @@ page 50004 "Assurance Credit Client List"
             }
         }
     }
-
-    trigger OnOpenPage()
-    begin
-        if Rec."Code Client" <> '' then
-            Rec.SetRange("Code Client", Rec."Code Client");
-    end;
 }
