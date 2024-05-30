@@ -1,51 +1,49 @@
 table 50008 "Assurance Credit Client"
 {
-    DataClassification = CustomerContent; // General classification for the table
+    DataClassification = CustomerContent;
 
     fields
     {
-        field(1; "Code Client"; Code[20])
+        field(1; "Entry ID"; Integer)
+        {
+            DataClassification = SystemMetadata;
+            AutoIncrement = true; // This field will auto-increment
+        }
+        field(2; "Code Client"; Code[20])
         {
             DataClassification = CustomerContent;
-            // Relation avec la table Customer, champ "No."
             TableRelation = Customer."No.";
         }
-        field(2; "Date"; Date)
+        field(3; "Date"; Date)
         {
             DataClassification = CustomerContent;
         }
-        field(3; "Decision Assurance"; Code[10])
+        field(4; "Decision Assurance"; Code[10])
         {
             DataClassification = CustomerContent;
-            // Relation avec la table "Decision Org Assurance Client", champ "Code"
             TableRelation = "Decision Org Assurance Client"."Code";
         }
-        field(4; "Valeur"; Decimal)
+        field(5; "Valeur"; Decimal)
         {
-            DataClassification = CustomerContent; // Assuming Valeur relates to customer transactions
+            DataClassification = CustomerContent;
         }
-        field(5; "Raison"; Text[50])
+        field(6; "Raison"; Text[50])
         {
-            DataClassification = CustomerContent; // Assuming Reason includes customer-specific details
+            DataClassification = CustomerContent;
         }
-        field(6; "Case Number"; Text[12])
+        field(7; "Case Number"; Text[12])
         {
-            DataClassification = CustomerContent; // Assuming this is a reference number relevant to the customer
+            DataClassification = CustomerContent;
         }
-        field(7; "Designation FR"; Text[50])
+        field(8; "Designation FR"; Text[50])
         {
-            // Défini comme un champ de type FlowField
             FieldClass = FlowField;
-            // Calcule la valeur en faisant une recherche dans la table "Decision Org Assurance Client"
-            // Since "Code", "Designation FR" and "Designation ES" are all in the same table ans same row, it can calculate 
             CalcFormula = Lookup("Decision Org Assurance Client"."Designation FR" WHERE("Code" = FIELD("Decision Assurance")));
             Editable = false;
         }
-        field(8; "Designation ES"; Text[50])
+        field(9; "Designation ES"; Text[50])
         {
-            // Défini comme un champ de type FlowField
             FieldClass = FlowField;
-            // Calcule la valeur en faisant une recherche dans la table "Decision Org Assurance Client"
             CalcFormula = Lookup("Decision Org Assurance Client"."Designation ES" WHERE("Code" = FIELD("Decision Assurance")));
             Editable = false;
         }
@@ -53,12 +51,13 @@ table 50008 "Assurance Credit Client"
 
     keys
     {
-        // Clé primaire pour la table, basée sur le champ "Code Client"
-        key(PK; "Code Client")
+        key(PK; "Entry ID")
         {
             Clustered = true;
         }
+        key(CustomerDate; "Code Client", "Date")
+        {
+            // This key will allow for efficient searches by client and date
+        }
     }
-
-
 }
