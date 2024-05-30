@@ -1,9 +1,10 @@
+// Cette pageextension permet d'afficher les informations de la table Assurance Credit Client et Decision Org Assurance Client sur la fiche client
 pageextension 50002 extClientCardAssuCredCli extends "Customer Card"
 {
     layout
     {
         addafter("General")
-        // Add the "Assurance Details" group after the "General" group
+        // Ajouter le groupe "Assurance Details" après le groupe "General"
         {
             group("Assurance Details")
             {
@@ -23,28 +24,28 @@ pageextension 50002 extClientCardAssuCredCli extends "Customer Card"
         }
     }
 
-    // Variables to temporarily store the data
+    // Variables pour stocker temporairement les données
     var
-        DecisionAssuranceDisplay: Text[50];
-        ValeurDisplay: Decimal;
+        DecisionAssuranceDisplay: Text[50]; // Variable pour afficher la décision d'assurance
+        ValeurDisplay: Decimal; // Variable pour afficher la valeur
 
     trigger OnAfterGetRecord()
     var
-        AssuranceCreditClient: Record "Assurance Credit Client";
-        DecisionOrgAssuranceClient: Record "Decision Org Assurance Client";
+        AssuranceCreditClient: Record "Assurance Credit Client"; // Enregistrement pour la table "Assurance Credit Client"
+        DecisionOrgAssuranceClient: Record "Decision Org Assurance Client"; // Enregistrement pour la table "Decision Org Assurance Client"
     begin
         // Initialize display values
-        DecisionAssuranceDisplay := 'Not Found';
-        ValeurDisplay := 0;
+        DecisionAssuranceDisplay := 'Not Found'; // Valeur par défaut si aucune décision d'assurance n'est trouvée
+        ValeurDisplay := 0; // Valeur par défaukt si aucune valeur n'est trouvée
 
-        // Filter to get the most recent record for the customer
-        AssuranceCreditClient.SetCurrentKey("Code Client", "Date");
-        AssuranceCreditClient.SetRange("Code Client", Rec."No.");
+        // Filtrer pour obtenir l'enregistrement le plus récent pour le client
+        AssuranceCreditClient.SetCurrentKey("Code Client", "Date"); // definit la clé de tri
+        AssuranceCreditClient.SetRange("Code Client", Rec."No."); // filtre les records pour correspondre au client
         if AssuranceCreditClient.FindLast() then begin
-            // Get the most recent Valeur
+            // Obtenir la valeur la plus récente
             ValeurDisplay := AssuranceCreditClient."Valeur";
 
-            // Use the "Decision Assurance" code to retrieve the designation from "Decision Org Assurance Client"
+            // Utiliser le code de "Decision Assurance" pour récupérer la désignation de "Decision Org Assurance Client"
             if DecisionOrgAssuranceClient.Get(AssuranceCreditClient."Decision Assurance") then begin
                 DecisionAssuranceDisplay := DecisionOrgAssuranceClient."Designation FR";
             end;
