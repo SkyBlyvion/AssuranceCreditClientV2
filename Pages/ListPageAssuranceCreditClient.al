@@ -58,7 +58,7 @@ page 50004 "Assurance Credit Client List"
             {
                 ApplicationArea = All;
                 Caption = 'Nouveau';
-                ToolTip = 'Créer un nouveau client assurance crédit';
+                ToolTip = 'Créer un nouveau enregistrement pour l''assurance de crédit client';
                 Image = NewDocument; // Utilisation d'une icône appropriée
 
                 trigger OnAction()
@@ -83,6 +83,24 @@ page 50004 "Assurance Credit Client List"
         }
         area(Processing)
         {
+            action("Edit Assurance Credit Client")
+            {
+                ApplicationArea = All;
+                Caption = 'Modifier';
+                ToolTip = 'Modifier l''enregistrement d''assurance crédit sélectionné';
+                Image = Edit;
+
+                trigger OnAction()
+                begin
+                    if Rec.FindFirst then begin
+                        // Ouvrir la page de carte pour le record sélectionné
+                        PAGE.RunModal(PAGE::"Assurance Credit Client Card", Rec);
+                        CurrPage.Update();
+                    end else begin
+                        Message('Aucun enregistrement sélectionné pour modification.');
+                    end;
+                end;
+            }
             action("Supprimer un enregistrement")
             {
                 ApplicationArea = All;

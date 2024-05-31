@@ -6,7 +6,7 @@ pageextension 50002 extClientCardAssuCredCli extends "Customer Card"
         addafter("General")
         // Ajouter le groupe "Assurance Details" après le groupe "General"
         {
-            group("Assurance Details")
+            group("Assurance Crédit Détails")
             {
                 field("DecisionAssuranceDisplay"; DecisionAssuranceDisplay)
                 {
@@ -35,7 +35,7 @@ pageextension 50002 extClientCardAssuCredCli extends "Customer Card"
         DecisionOrgAssuranceClient: Record "Decision Org Assurance Client"; // Enregistrement pour la table "Decision Org Assurance Client"
     begin
         // Initialize display values
-        DecisionAssuranceDisplay := 'Not Found'; // Valeur par défaut si aucune décision d'assurance n'est trouvée
+        DecisionAssuranceDisplay := 'Non Renseigné'; // Valeur par défaut si aucune décision d'assurance n'est trouvée
         ValeurDisplay := 0; // Valeur par défaukt si aucune valeur n'est trouvée
 
         // Filtrer pour obtenir l'enregistrement le plus récent pour le client

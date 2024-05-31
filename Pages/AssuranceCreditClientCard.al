@@ -45,4 +45,14 @@ page 50006 "Assurance Credit Client Card"
             }
         }
     }
+
+    // Verifications pour la presence de données dans le champ Date 
+    trigger OnQueryClosePage(CloseAction: Action): Boolean
+    begin
+        if Rec.Date = 0D then begin
+            Message('Le champ Date est obligatoire, afin d''éviter les erreurs d''incrémentation.');
+            exit(false); // Prevent the page from closing
+        end;
+        exit(true); // Allow the page to close
+    end;
 }
