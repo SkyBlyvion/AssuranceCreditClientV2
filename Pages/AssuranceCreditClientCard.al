@@ -45,24 +45,4 @@ page 50006 "Assurance Credit Client Card"
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action("Save")
-            {
-                ApplicationArea = All;
-                Caption = 'Sauvegarder';
-                ToolTip = 'Sauvegarder les modifications';
-                Image = Save; // Utilisation d'une icône appropriée
-                trigger OnAction()
-                begin
-                    Rec.Modify(true);
-                    CurrPage.Close();
-                end;
-            }
-        }
-    }
-
 }

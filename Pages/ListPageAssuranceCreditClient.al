@@ -30,6 +30,10 @@ page 50004 "Assurance Credit Client List"
                     ApplicationArea = All;
                     TableRelation = "Decision Org Assurance Client".Code;
                 }
+                field("Designation FR"; Rec."Designation FR")
+                {
+                    ApplicationArea = All;
+                }
                 field("Valeur"; Rec."Valeur")
                 {
                     ApplicationArea = All;
@@ -74,6 +78,28 @@ page 50004 "Assurance Credit Client List"
                     // Update the current page
                     CurrPage.Update();
 
+                end;
+            }
+        }
+        area(Processing)
+        {
+            action("Supprimer un enregistrement")
+            {
+                ApplicationArea = All;
+                Caption = 'Supprimer';
+                ToolTip = 'Supprimer un enregistrement';
+                Image = Delete;
+
+                trigger OnAction()
+                begin
+                    if Rec.FindFirst then begin
+                        if Confirm('Êtes-vous sûr de vouloir supprimer cet enregistrement ?', false) then begin
+                            Rec.Delete(true);
+                            CurrPage.Update();
+                        end
+                    end else begin
+                        Message('Aucun enregistrement à supprimer');
+                    end;
                 end;
             }
         }

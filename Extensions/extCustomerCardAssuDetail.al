@@ -12,6 +12,7 @@ pageextension 50003 extCustomerCardAssuDetails extends "Customer Card"
                 ApplicationArea = All;
                 Caption = 'Assurance Credit Client';
                 ToolTip = 'Ouvrir la liste des clients assurance crédit';
+                Image = Insurance;
                 trigger OnAction()
                 // declaration des variables
                 var
@@ -32,6 +33,7 @@ pageextension 50003 extCustomerCardAssuDetails extends "Customer Card"
                 ApplicationArea = All;
                 Caption = 'Decision Org Assurance Client';
                 ToolTip = 'Ouvrir la liste des décisions des clients assurance';
+                Image = List;
                 trigger OnAction()
                 begin
                     // Ouvrir la page de la liste des décisions des clients assurance

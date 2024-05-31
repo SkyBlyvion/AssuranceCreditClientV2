@@ -1,3 +1,5 @@
+/* the "Entry ID" serves as a unique identifier for each assurance credit client record, while "Code Client" is a reference to the customer, 
+    ensuring referential integrity with the Customer table. */
 table 50008 "Assurance Credit Client"
 {
     DataClassification = CustomerContent;
