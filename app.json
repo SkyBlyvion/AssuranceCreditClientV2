@@ -2,9 +2,9 @@
   "id": "c5b3f930-6e28-4b19-9e6b-8b6d9a6e7b6f",
   "name": "Assurance Credit Client Objects",
   "publisher": "Lopez Nicolas",
-  "version": "1.0.3.3",
+  "version": "1.0.4.7",
   "brief": "",
-  "description": "",
+  "description": "REVIMPORT - Customer Assurance Extension",
   "privacyStatement": "",
   "EULA": "",
   "help": "",
@@ -12,7 +12,7 @@
   "logo": "",
   "dependencies": [],
   "screenshots": [],
-  "platform": "1.0.0.0",
+  "platform": "19.0.0.0",
   "application": "24.0.0.0",
   "idRanges": [
     {
@@ -28,5 +28,7 @@
   "runtime": "13.0",
   "features": [
     "NoImplicitWith"
-  ]
+  ],
+  "target": "Cloud"
+
 }

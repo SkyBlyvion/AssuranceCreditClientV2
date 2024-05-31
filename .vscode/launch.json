@@ -2,20 +2,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Microsoft cloud sandbox",
-            "request": "launch",
             "type": "al",
-            "environmentType": "Sandbox",
-            "environmentName": "Sandbox",
+            "request": "launch",
+            "name": "Microsoft cloud sandbox",
             "server": "https://businesscentral.dynamics.com/",
             "tenant": "96c980fb-e971-4245-a8c1-f8680d3274b8",
+            "environmentName": "Sandbox",
             "schemaUpdateMode": "Synchronize",
+            "environmentType": "Sandbox",
             "startupObjectId": 22,
             "startupObjectType": "Page",
-            "breakOnError": "All",
+            "breakOnError": true,
             "launchBrowser": true,
+            "enableSqlInformationDebugger": true,
             "enableLongRunningSqlStatements": true,
-            "enableSqlInformationDebugger": true
         }
     ]
 }

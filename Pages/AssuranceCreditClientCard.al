@@ -6,7 +6,8 @@ page 50006 "Assurance Credit Client Card"
     PageType = Card; // Définir le type de page comme une fiche (Card)
     SourceTable = "Assurance Credit Client"; // Définir la table source de la page
     ApplicationArea = All; // Rendre la page accessible dans toutes les zones d'application
-    Editable = true; // Permettre l'édition des champs sur la page
+    Editable = true; // Rendre la page modifiable
+
 
     layout
     {
@@ -44,4 +45,24 @@ page 50006 "Assurance Credit Client Card"
             }
         }
     }
+
+    actions
+    {
+        area(Processing)
+        {
+            action("Save")
+            {
+                ApplicationArea = All;
+                Caption = 'Sauvegarder';
+                ToolTip = 'Sauvegarder les modifications';
+                Image = Save; // Utilisation d'une icône appropriée
+                trigger OnAction()
+                begin
+                    Rec.Modify(true);
+                    CurrPage.Close();
+                end;
+            }
+        }
+    }
+
 }

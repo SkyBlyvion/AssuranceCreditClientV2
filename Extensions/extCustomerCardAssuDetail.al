@@ -16,24 +16,14 @@ pageextension 50003 extCustomerCardAssuDetails extends "Customer Card"
                 // declaration des variables
                 var
                     AssuranceCreditClientRec: Record "Assurance Credit Client";
-                    CustomerNo: Code[20]; // Code du client
+                    CustomerRec: Record "Customer";
                 begin
                     // Affecter le numéro du client actuel à la variable CustomerNo
-                    CustomerNo := Rec."No.";
+                    CustomerRec.get(Rec."No.");
 
-                    // Créer un nouvel enregistrement dans la table Assurance Credit Client
-                    AssuranceCreditClientRec.Init();
-                    AssuranceCreditClientRec."Code Client" := CustomerNo; // Affecter le numéro du client à la propriété "Code Client" de l'enregistrement AssuranceCreditClientRec
-                    AssuranceCreditClientRec.Insert(true); // Insérer et exécuter le trigger OnInsert
-
-                    // Valider la transaction pour éviter les problèmes de verrouillage
-                    COMMIT;
-
-                    // Ouvrir le nouvel enregistrement créé pour édition
-                    PAGE.RunModal(PAGE::"Assurance Credit Client Card", AssuranceCreditClientRec);
-
-                    // Après l'édition, ouvrir la page de liste filtrée par le code du client actuel
-                    PAGE.RunModal(PAGE::"Assurance Credit Client List", AssuranceCreditClientRec);
+                    // Pass the "Customer No." as a filter to the list page
+                    AssuranceCreditClientRec.SetRange("Code Client", CustomerRec."No.");
+                    PAGE.RunModal(PAGE::"Assurance Credit Client List", AssuranceCreditClientRec); // open the list page
                 end;
             }
 
