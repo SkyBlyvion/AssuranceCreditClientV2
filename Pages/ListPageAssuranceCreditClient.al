@@ -110,13 +110,17 @@ page 50004 "Assurance Credit Client List"
 
                 trigger OnAction()
                 begin
-                    if Rec.FindFirst then begin
+                    // Ensure a record is selected
+                    if Rec.Get(Rec."Entry ID") then begin
+                        // Confirm the deletion
                         if Confirm('Êtes-vous sûr de vouloir supprimer cet enregistrement ?', false) then begin
+                            // Delete the selected record
                             Rec.Delete(true);
+                            // Refresh the page
                             CurrPage.Update();
-                        end
+                        end;
                     end else begin
-                        Message('Aucun enregistrement à supprimer');
+                        Message('Aucun enregistrement à supprimer.');
                     end;
                 end;
             }
