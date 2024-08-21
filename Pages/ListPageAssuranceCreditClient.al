@@ -52,9 +52,25 @@ page 50004 "Assurance Credit Client List"
 
     actions
     {
+        area(Promoted)
+        {
+            actionref(NewAssuranceCreditClient; "New Assurance Credit Client")
+            {
+
+            }
+
+            actionref(EditAssuranceCreditClient; "Edit Assurance Credit Client")
+            {
+            }
+
+            actionref(DeleteAssuranceCreditClient; "Supprimer un enregistrement")
+            {
+            }
+        }
+
         area(creation)
         {
-            // c'est l'ors de l'action New que l'on préremplit le code client, il est ensuite filtré dans la pageList pour n'afficher que le client correspondant
+            // c'est lors de l'action New que l'on préremplit le code client, il est ensuite filtré dans la pageList pour n'afficher que le client correspondant
             action("New Assurance Credit Client")
             {
                 ApplicationArea = All;
@@ -67,8 +83,8 @@ page 50004 "Assurance Credit Client List"
                     AssuranceCreditClientRec: Record "Assurance Credit Client";
                 begin
                     // Créer un nouveau record et pre-fill avec "code client"
-                    AssuranceCreditClientRec.Init(); // added at 12:03
-                    AssuranceCreditClientRec."Code Client" := Rec.GetFilter("Code Client"); // added at 12:03
+                    AssuranceCreditClientRec.Init();
+                    AssuranceCreditClientRec."Code Client" := Rec.GetFilter("Code Client");
                     AssuranceCreditClientRec.Insert(true);
 
                     COMMIT;
@@ -78,10 +94,10 @@ page 50004 "Assurance Credit Client List"
 
                     // Update the current page
                     CurrPage.Update();
-
                 end;
             }
         }
+
         area(Processing)
         {
             action("Edit Assurance Credit Client")
@@ -102,6 +118,7 @@ page 50004 "Assurance Credit Client List"
                     end;
                 end;
             }
+
             action("Supprimer un enregistrement")
             {
                 ApplicationArea = All;
@@ -127,6 +144,4 @@ page 50004 "Assurance Credit Client List"
             }
         }
     }
-
-
 }

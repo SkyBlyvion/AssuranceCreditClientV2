@@ -12,7 +12,7 @@ page 50006 "Assurance Credit Client Card"
     {
         area(content)
         {
-            group(Group)
+            group(General)
             {
                 field("Code Client"; Rec."Code Client")
                 {
@@ -44,6 +44,8 @@ page 50006 "Assurance Credit Client Card"
             }
         }
     }
+
+
 
     // Verifications pour la presence de données dans le champ Date 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
