@@ -1,3 +1,4 @@
+// Cette table contient les informations relatives aux clients d'assurance d'une organisation.
 table 50009 "Decision Org Assurance Client"
 {
     DataClassification = ToBeClassified;

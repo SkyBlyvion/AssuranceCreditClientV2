@@ -1,6 +1,5 @@
 /* Cette page affiche les détails d'un enregistrement spécifique de la table "Assurance Credit Client".
    Elle permet aux utilisateurs de visualiser et de modifier les informations relatives à l'assurance crédit d'un client. */
-
 page 50006 "Assurance Credit Client Card"
 {
     PageType = Card; // Définir le type de page comme une fiche (Card)
@@ -38,7 +37,7 @@ page 50006 "Assurance Credit Client Card"
                 {
                     ApplicationArea = All; // Champ accessible dans toutes les zones d'application
                 }
-                field("Case Number"; Rec."Case Number")
+                field("Numero Dossier"; Rec."Numero Dossier")
                 {
                     ApplicationArea = All; // Champ accessible dans toutes les zones d'application
                 }
@@ -50,7 +49,7 @@ page 50006 "Assurance Credit Client Card"
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
         if Rec.Date = 0D then begin
-            Message('Le champ Date est obligatoire, afin d''éviter les erreurs d''incrémentation.');
+            Message('Le champ Date est obligatoire, merci de le renseigner.');
             exit(false); // Prevent the page from closing
         end;
         exit(true); // Allow the page to close

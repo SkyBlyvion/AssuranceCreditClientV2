@@ -1,34 +1,76 @@
 {
-  "id": "c5b3f930-6e28-4b19-9e6b-8b6d9a6e7b6f",
-  "name": "Assurance Credit Client Objects",
-  "publisher": "Lopez Nicolas",
-  "version": "1.0.5.4",
-  "brief": "",
-  "description": "REVIMPORT - Customer Assurance Extension",
-  "privacyStatement": "",
-  "EULA": "",
-  "help": "",
-  "url": "",
-  "logo": "",
-  "dependencies": [],
-  "screenshots": [],
-  "platform": "19.0.0.0",
-  "application": "24.0.0.0",
-  "idRanges": [
-    {
-      "from": 50000,
-      "to": 50010
-    }
-  ],
-  "resourceExposurePolicy": {
-    "allowDebugging": true,
-    "allowDownloadingSource": true,
-    "includeSourceInSymbolFile": true
-  },
-  "runtime": "13.0",
-  "features": [
-    "NoImplicitWith"
-  ],
-  "target": "Cloud"
-
+    "id": "c5b3f930-6e28-4b19-9e6b-8b6d9a6e7b6f",
+    "name": "Assurance Credit Client Objects",
+    "publisher": "Lopez Nicolas",
+    "version": "1.0.5.6",
+    "brief": "",
+    "description": "REVIMPORT - Customer Assurance Extension",
+    "privacyStatement": "",
+    "EULA": "",
+    "help": "",
+    "url": "",
+    "logo": "",
+    "dependencies": [
+        {
+            "id": "E2AE191D-8829-44C3-A373-3749A2742D4D",
+            "name": "Service Declaration",
+            "publisher": "Microsoft",
+            "version": "24.2.20227.20579"
+        },
+        {
+            "id": "9D5D4106-1A59-4A3A-8940-65A9024AD1B3",
+            "name": "TableExtenItemTriggers",
+            "publisher": "Lopez Nicolas - REVIMPORT",
+            "version": "1.0.0.1"
+        },
+        {
+            "id": "A01864F8-9C3F-42F6-8328-8D7BE1CE3E20",
+            "name": "_Exclude_Master_Data_Management",
+            "publisher": "Microsoft",
+            "version": "24.2.20227.20579"
+        },
+        {
+            "id": "70912191-3C4C-49FC-A1DE-BC6EA1AC9DA6",
+            "name": "Intrastat Core",
+            "publisher": "Microsoft",
+            "version": "24.2.20227.20579"
+        },
+        {
+            "id": "12EACC5C-C397-78FE-AD49-C030E45FCD3E",
+            "name": "ItemsExtensionsTables",
+            "publisher": "Lopez Nicolas",
+            "version": "1.0.1.8"
+        },
+        {
+            "id": "EC255F57-31D0-4CA2-B751-F2FA7C745ABB",
+            "name": "Shopify Connector",
+            "publisher": "Microsoft",
+            "version": "24.2.20227.21835"
+        },
+        {
+            "id": "C526B3E9-B8CA-4683-81BA-FCD5F6B1472A",
+            "name": "Sales and Inventory Forecast",
+            "publisher": "Microsoft",
+            "version": "24.2.20227.20579"
+        }
+    ],
+    "screenshots": [],
+    "platform": "19.0.0.0",
+    "application": "24.2.20227.20460",
+    "idRanges": [
+        {
+            "from": 50000,
+            "to": 50010
+        }
+    ],
+    "resourceExposurePolicy": {
+        "allowDebugging": true,
+        "allowDownloadingSource": true,
+        "includeSourceInSymbolFile": true
+    },
+    "runtime": "13.0",
+    "features": [
+        "NoImplicitWith"
+    ],
+    "target": "Cloud"
 }

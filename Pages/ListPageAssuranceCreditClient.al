@@ -42,7 +42,7 @@ page 50004 "Assurance Credit Client List"
                 {
                     ApplicationArea = All;
                 }
-                field("Case Number"; Rec."Case Number")
+                field("Numero Dossier"; Rec."Numero Dossier")
                 {
                     ApplicationArea = All;
                 }
@@ -54,6 +54,7 @@ page 50004 "Assurance Credit Client List"
     {
         area(creation)
         {
+            // c'est l'ors de l'action New que l'on préremplit le code client, il est ensuite filtré dans la pageList pour n'afficher que le client correspondant
             action("New Assurance Credit Client")
             {
                 ApplicationArea = All;
@@ -111,7 +112,7 @@ page 50004 "Assurance Credit Client List"
                 trigger OnAction()
                 begin
                     // Ensure a record is selected
-                    if Rec.Get(Rec."Entry ID") then begin
+                    if Rec.Get(Rec."Code Client", Rec."Date") then begin
                         // Confirm the deletion
                         if Confirm('Êtes-vous sûr de vouloir supprimer cet enregistrement ?', false) then begin
                             // Delete the selected record

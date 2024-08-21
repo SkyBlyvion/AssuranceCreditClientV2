@@ -15,7 +15,18 @@
             "breakOnError": true,
             "launchBrowser": true,
             "enableSqlInformationDebugger": true,
-            "enableLongRunningSqlStatements": true,
+            "enableLongRunningSqlStatements": true
+        },
+        {
+            "name": "AL: Generated Snapshot request",
+            "request": "snapshotInitialize",
+            "type": "al",
+            "environmentType": "Production",
+            "environmentName": "Production",
+            "sessionId": 162719,
+            "breakOnNext": "WebClient",
+            "executionContext": "DebugAndProfile",
+            "tenant": "96c980fb-e971-4245-a8c1-f8680d3274b8"
         }
     ]
 }

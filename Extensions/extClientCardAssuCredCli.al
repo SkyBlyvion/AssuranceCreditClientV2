@@ -36,7 +36,7 @@ pageextension 50002 extClientCardAssuCredCli extends "Customer Card"
     begin
         // Initialize display values
         DecisionAssuranceDisplay := 'Non Renseigné'; // Valeur par défaut si aucune décision d'assurance n'est trouvée
-        ValeurDisplay := 0; // Valeur par défaukt si aucune valeur n'est trouvée
+        ValeurDisplay := 0; // Valeur par défault si aucune valeur n'est trouvée
 
         // Filtrer pour obtenir l'enregistrement le plus récent pour le client
         AssuranceCreditClient.SetCurrentKey("Code Client", "Date"); // definit la clé de tri
