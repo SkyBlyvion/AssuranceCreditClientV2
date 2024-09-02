@@ -87,7 +87,7 @@ page 50004 "Assurance Credit Client List"
                     AssuranceCreditClientRec."Code Client" := Rec.GetFilter("Code Client");
                     AssuranceCreditClientRec.Insert(true);
 
-                    COMMIT;
+                    COMMIT();
 
                     // Ouvrir la page de carte client avec le nouveau record et permettre à l'utilisateur de le modifier
                     PAGE.RunModal(PAGE::"Assurance Credit Client Card", AssuranceCreditClientRec);
@@ -109,13 +109,12 @@ page 50004 "Assurance Credit Client List"
 
                 trigger OnAction()
                 begin
-                    if Rec.FindFirst then begin
+                    if Rec.FindFirst() then begin
                         // Ouvrir la page de carte pour le record sélectionné
                         PAGE.RunModal(PAGE::"Assurance Credit Client Card", Rec);
                         CurrPage.Update();
-                    end else begin
+                    end else
                         Message('Aucun enregistrement sélectionné pour modification.');
-                    end;
                 end;
             }
 
@@ -137,9 +136,9 @@ page 50004 "Assurance Credit Client List"
                             // Refresh the page
                             CurrPage.Update();
                         end;
-                    end else begin
+                    end else
                         Message('Aucun enregistrement à supprimer.');
-                    end;
+
                 end;
             }
         }

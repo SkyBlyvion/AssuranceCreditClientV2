@@ -45,15 +45,52 @@ page 50006 "Assurance Credit Client Card"
         }
     }
 
-
-
-    // Verifications pour la presence de données dans le champ Date 
+    // Vérifications pour la présence de données dans le champ Date 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
         if Rec.Date = 0D then begin
             Message('Le champ Date est obligatoire, merci de le renseigner.');
-            exit(false); // Prevent the page from closing
+            exit(false); // Empêcher la fermeture de la page
         end;
-        exit(true); // Allow the page to close
+        UpdateCustomerCreditLimit(); // Met à jour la limite de crédit avec la valeur la plus récente
+        exit(true); // Permettre la fermeture de la page
     end;
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        UpdateCustomerCreditLimit();
+        exit(true); // Continuer l'insertion
+    end;
+
+    trigger OnModifyRecord(): Boolean
+    begin
+        UpdateCustomerCreditLimit();
+        exit(true); // Continuer la modification
+    end;
+
+    local procedure UpdateCustomerCreditLimit()
+    var
+        CustomerRec: Record Customer;
+        LastRecord: Record "Assurance Credit Client";
+    begin
+        // Filtrer les enregistrements pour le client courant et trier par date pour obtenir le plus récent
+        LastRecord.SetCurrentKey("Code Client", "Date");
+        LastRecord.SetRange("Code Client", Rec."Code Client");
+
+        if LastRecord.FindLast() then
+            if CustomerRec.Get(Rec."Code Client") then
+                if CustomerRec."Credit Limit (LCY)" <> LastRecord."Valeur" then begin
+                    CustomerRec."Credit Limit (LCY)" := LastRecord."Valeur";
+                    CustomerRec.Modify(true);
+                    COMMIT();
+
+                end;
+
+    end;
+
+
+
+
+
+
 }

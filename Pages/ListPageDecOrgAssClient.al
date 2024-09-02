@@ -3,10 +3,8 @@ page 50005 "Decision Org Ass Client List"
 {
     // Définition de la page en tant que page de type Liste
     PageType = List;
-
     // Spécifie la table source pour cette page
     SourceTable = "Decision Org Assurance Client";
-
     // Définit la zone d'application pour cette page (accessible à tous)
     ApplicationArea = All;
 
